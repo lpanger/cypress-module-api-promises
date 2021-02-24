@@ -1,50 +1,11 @@
-# cypress-module-api
-> Run Cypress via its module API
+# cypress-module-api bug?
 
-Cypress provides a Node module in addition to its CLI commands.
+git clone repo
+run yarn to install packages
+run yarn cypress:run to reproduce
 
-See [module API documentation](https://on.cypress.io/module-api)
+Will create 3 promises. 3rd one resolves first, then 1st one, then 2nd one. On Linux, second one will always return no test result data.
 
-```js
-require('cypress').run({
-  // options
-}).then(testResults => {
-  // rerun failing specs
-  // or email test report
-  // or post it on Slack
-  // ...
-})
-```
+This works fine on Windows 10 and Mac 10.15.7, but not Linux Ubuntu 20.04
 
-## Example
-
-In this recipe, execute `npm run cypress:run` script which calls [e2e-tests.js](e2e-tests.js) that finds all spec files in [cypress/integration](cypress/integration), sorts them by the last modified timestamp and runs them using Cypress one by one.
-
-For example, if I add a comment to `second-spec.js`, then it will be executed first
-
-```
-npm run cypress:run
-
-Running last modified spec first
----------------------------------------------------
-filename                              time
-------------------------------------  -------------
-./cypress/integration/second-spec.js  1555069051000
-./cypress/integration/third-spec.js   1555067795000
-./cypress/integration/first-spec.js   1555067777000
-
-...
-Cypress output for each spec file
-...
-
-
-Test run summary
----------------------------------------
-spec            tests  passes  failures
---------------  -----  ------  --------
-second-spec.js  1      1       0
-third-spec.js   1      1       0
-first-spec.js   1      1       0
-```
-
-**Note:** this only uses the file system modified time, thus does not work with files checked out from a Git repository - they all will have the same modified timestamp.
+Using node 10.23.2
