@@ -5,6 +5,6 @@ describe('second feature', () => {
 	setTimeout(() => {
 		console.log('second');
 		done();
-	}, 2000);
+	}, 5000);
   })
 })

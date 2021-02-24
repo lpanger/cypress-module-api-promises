@@ -4,6 +4,6 @@ describe('first feature', () => {
     setTimeout(() => {
 	    console.log('first');
 	    done();
-    }, 3000);
+    }, 6000);
   })
 })
