@@ -12,14 +12,14 @@ const runOneSpec = (spec) => {
 		config: {
 			video: false,
 		},
-		spec: spec.filename,
+		spec,
 	})
 }
 
 const promises = [];
 globby('./cypress/integration/*-spec.js')
 .then((specs) => {
-	console.table('Running last modified spec first', specs)
+	console.log(specs);
 
 	specs.forEach((spec) => {
 		promises.push(runOneSpec(spec));
