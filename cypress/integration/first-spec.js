@@ -1,9 +1,7 @@
 /// <reference types="cypress" />
 describe('first feature', () => {
-  it('works', (done) => {
-    setTimeout(() => {
-	    console.log('first');
-	    done();
-    }, 2000);
+  it('works', () => {
+    cy.wait(2000);
+    cy.log('first');
   })
 })
