@@ -38,6 +38,6 @@ globby('./cypress/integration/*-spec.js')
 				}
 			});
 
-			process.exit();
+			process.exit(results.filter(x => x.status === 'failed').length);
 		});
 });
